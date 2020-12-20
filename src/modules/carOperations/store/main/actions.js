@@ -27,6 +27,27 @@ const actions = {
     },
 
 
+     // Get All un_sold Cars action 
+    async [ActionsTypes.GET_UN_SOLD_CAR_ACTION] ({commit}){
+        const carsService = new CarsService();
+        const reply = await carsService.getunsoldCar();
+        if(reply){
+            commit(MutationsTypes.GET_UN_SOLD_CAR_MUTATION , reply.data.car)
+        } 
+        console.log('get all car action:',reply.data.car);
+    },
+
+    async [ActionsTypes.PURCHASE_CAR_ACTION] ({ commit } , {oldCar , payerName , priceOfSale}) {
+        const carService = new CarsService();
+        const reply = await carService.purchaseCar({oldCar , payerName , priceOfSale});
+        if(reply){
+             const newCar = reply.data.car;
+              oldCar = {...newCar};
+             commit(MutationsTypes.PURCHASE_CAR_MUTATION ,oldCar)
+        }
+    }, 
+
+
     // delete Car action 
     async [ActionsTypes.DELETE_CAR_ACTION] ({ state } , carId){
         const carService = new CarsService();
@@ -35,18 +56,7 @@ const actions = {
             state.cars.splice(carId,1)
             // commit(MutationsTypes.DELETE_CAR_MUTATION , reply.data.car)
         }
-        
-
     },
-
-
-    async [ActionsTypes.PURCHASE_CAR_ACTION] ({ commit } , carId) {
-        const carService = new CarsService();
-        const reply = await carService.purchaseCar({ carId });
-        if(reply){
-            commit(MutationsTypes.PURCHASE_CAR_MUTATION , reply.data.data)
-        }
-    }, 
 
 
     async [ActionsTypes.GET_CAR_BY_SELLING_DATE_ACTION]({ commit } , sellingDate){

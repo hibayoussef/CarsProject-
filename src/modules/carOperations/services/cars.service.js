@@ -8,10 +8,19 @@ export default class CarsService {
     return api.post(CarsConfigurations.CREATE_CAR_URL, { car });
   }
 
-
   // get Cars 
   viewAllCars(){
     return api.get(CarsConfigurations.GETTING_CAR_INFO_URL);
+  }
+
+  // get car that un sold
+  getunsoldCar(){
+    return api.get(CarsConfigurations.GET_CAR_UN_SOLD_URL);
+  }
+  
+   //  purchase car action 
+  purchaseCar(payerName , priceOfSale){
+    return api.put(CarsConfigurations.PUT_PURCHASE_CAR_URL , {payerName , priceOfSale})
   }
 
   // edit car service
@@ -22,12 +31,6 @@ export default class CarsService {
   // delete car service 
   deleteCar(carId){
     return api.delete(CarsConfigurations.DELETE_CAR_URL , {carId})
-  }
-
-
-  //  purchase car action 
-  purchaseCar(carId){
-    return api.put(CarsConfigurations.PUT_PURCHASE_CAR_URL , {carId})
   }
 
 

@@ -30,9 +30,9 @@
   </v-container>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions , mapGetters } from 'vuex';
 import ActionsTypes from '../../store/types/actions-types';
-
+import GettersTypes from '../../store/types/getters-types';
 
 export default {
   data: () => ({
@@ -42,14 +42,21 @@ export default {
   }),
 
   computed: {
-    
+    ...mapGetters({
+        getcarsdispatcher: GettersTypes.GET_CARS_GETTERS
+    })
    
   },
 
   methods: {
     ...mapActions({
         carwithoptimisticlock: ActionsTypes.GET_CARS_WITH_OPTIMISTIC_LOCK
-    })
+    }),
+    getcars(cars){
+       this.getcarsdispatcher({
+           cars
+       })
+   }
   },
 };
 </script>
