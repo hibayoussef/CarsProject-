@@ -86,9 +86,13 @@ export default {
   methods: {
     onCreateCar() {},
   },
-  edit(){
+  editItem(car) {
+      this.dialogDelete = false;
+      this.editedIndex = this.categories.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
 
-  }
 };
 </script>
 
