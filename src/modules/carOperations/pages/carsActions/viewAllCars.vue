@@ -7,6 +7,9 @@
         id="limited-products"
         :style="'border: 0px solid #D50000;'"
       >
+        <v-btn class="red accent-4 color myfont pl-3" @click="onCreateCar">
+          evict Cashig 
+        </v-btn>
         <v-data-table
           :headers="tableHeaders"
           :items="loadedCarsGetter"
@@ -20,7 +23,7 @@
             <v-btn icon @click="edit(item.id)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <v-btn icon @click="delete(item.id)">
+            <v-btn icon @click="delete item.id">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </template>
@@ -55,7 +58,6 @@ export default {
       page: 1,
       pageCount: 0,
       itemsPerPage: 10,
-
 
       desserts: [
         {
@@ -95,16 +97,14 @@ export default {
   mounted() {
     // this.loadedCarsGetter();
   },
-  methods:{
+  methods: {
     ...mapActions({
-      editcardispatcher: ActionsTypes.EDIT_CAR_ACTION
+      editcardispatcher: ActionsTypes.EDIT_CAR_ACTION,
     }),
-    edit(){
-      this.editcardispatcher({
-        
-      })
-    }
-  }
+    edit() {
+      this.editcardispatcher({});
+    },
+  },
 };
 </script>
 

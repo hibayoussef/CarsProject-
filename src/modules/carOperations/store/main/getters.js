@@ -13,9 +13,9 @@ const getters = {
     [GettersTypes.GET_HEADERS_ITEMS_GETTER](state){
         return state.itemsHeaders;
     },
-   [ GettersTypes.GET_ITEMS_FORM_GETTER](state){
-       return state.loadedCar
-   }
+    [GettersTypes.GET_ITEMS_FORM_GETTER](state){
+       return state.loadedItems;
+    }
 }
  
 export default getters;

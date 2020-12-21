@@ -1,4 +1,7 @@
 const state = {
+  loadedItems:[1,
+  'Apricots',
+  'Avocado'],
   loadedCar: [],
   unSoldCars:[],
   cars:["Car1" , "Car2" , "Car3"],

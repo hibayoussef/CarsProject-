@@ -28,6 +28,11 @@ export default class CarsService {
     return api.post(CarsConfigurations.EDIT_CAR_INFORMATION_URL , {carId , name , price, numberofSeats})
   }
 
+
+  cachingservice(){
+    return api.delete(CarsConfigurations.CACHING_URL)
+  }
+
   // delete car service 
   deleteCar(carId){
     return api.delete(CarsConfigurations.DELETE_CAR_URL , {carId})

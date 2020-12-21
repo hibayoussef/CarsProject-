@@ -1,8 +1,12 @@
 <template>
   <v-app>
     <v-container>
-      <v-layout row class="padding">
-        <v-flex xs12 sm6 offset-sm3>
+      <v-card
+        class="mx-auto mt-5 pa-3"
+        max-width="100%"
+        id="limited-products"
+        :style="'border: 0px solid #D50000;'"
+      >
           <v-data-table
             :headers="itemsHeaders"
             :items="loadedItemsGetter"
@@ -46,8 +50,7 @@
               class="pl-7 pr-7"
             ></v-text-field>
           </div>
-        </v-flex>
-      </v-layout>
+        </v-card>
     </v-container>
   </v-app>
 </template>
@@ -62,6 +65,12 @@ export default {
       page: 1,
       pageCount: 0,
       itemsPerPage: 10,
+      editedItem: {
+      id: 0,
+      name: "",
+      price: null,
+      numberofseats: null  
+    },
     };
   },
   created() {},
@@ -77,6 +86,9 @@ export default {
   methods: {
     onCreateCar() {},
   },
+  edit(){
+
+  }
 };
 </script>
 
