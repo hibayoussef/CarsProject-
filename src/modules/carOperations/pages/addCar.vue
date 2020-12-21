@@ -102,7 +102,6 @@ export default {
       name: " ",
       price: " ",
       numberofseats: " ",
-      showModal: false,
     };
   },
   created() {},
@@ -110,9 +109,9 @@ export default {
   methods: {
     onCreateCar() {
       this.createcardispatcher({
-        name: this.name,
-        price: this.price,
-        seatsNumber: this.numberofseats,
+        name: " ",
+        price: " ",
+        numberofseats: " ",
       })
     },
     ...mapActions({

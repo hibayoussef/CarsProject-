@@ -87,13 +87,17 @@ export default {
     onCreateCar() {},
   },
   editItem(car) {
-      this.dialogDelete = false;
-      this.editedIndex = this.categories.indexOf(item);
-      this.editedItem = Object.assign({}, item);
-      this.dialog = true;
+     this.car.name = this.name;
+      this.editedIndex = this.car.indexOf(car);
+      this.editedItem = Object.assign({}, car);
     },
 
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.color{
+  color: #D50000;
+  font-family: "Mansalva", cursive;
+}
+</style>

@@ -75,12 +75,11 @@ const actions = {
         }
     },
     // Edit Car's Information action
-    async [ActionsTypes.EDIT_CAR_ACTION](_, payload) {
-        const { name, price , numberofspace } = payload;
+    async [ActionsTypes.EDIT_CAR_ACTION]({commit}, car) {
        const carService = new CarsService();
-       const reply = await carService.editCar({ name, price , numberofspace });
-       if(reply){
-           return 1
+       const reply = await carService.editCar(car);
+       if(reply.data.deleted){
+           commit(MutationsTypes.EDIT_CAR_MUTATION , car)
        }
       },
 

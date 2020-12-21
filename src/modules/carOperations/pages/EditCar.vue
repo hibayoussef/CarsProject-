@@ -19,9 +19,11 @@
       <v-card>
         <v-layout>
           <v-flex xs12>
-            <v-card-title class="color">
-              <span class="headline"> Edit Recipe</span>
-            </v-card-title>
+            <div class="myfont pl-5">
+              <v-card-title>
+                <span> Edit Car</span>
+              </v-card-title>
+            </div>
           </v-flex>
         </v-layout>
         <v-divider xs12></v-divider>
@@ -32,18 +34,17 @@
               <v-container>
                 <v-row>
                   <v-col cols="12">
-
                     <v-text-field
                       name="name"
                       label="Name"
                       id="name"
+                      class="colorLabel"
                       v-model="editedName"
                       multi-line
                       required
                     ></v-text-field>
                   </v-col>
-                   <v-col cols="12">
-
+                  <v-col cols="12">
                     <v-text-field
                       name="priceOfSale"
                       label="Price Of Sale"
@@ -55,8 +56,7 @@
                     ></v-text-field>
                   </v-col>
 
-                   <v-col cols="12">
-
+                  <v-col cols="12">
                     <v-text-field
                       name="numberOfSeats"
                       label="NumberOfSeats"
@@ -75,16 +75,15 @@
         <v-layout>
           <v-flex xs12>
             <v-card-actions>
-
+              <v-btn class="myfont pl-5 text-right" text @click="onSaveChanges">
+                Save
+              </v-btn>
               <v-btn
-                class="red--text accent-4"
+                class="myfont pl-5 text-center"
                 text
                 @click="editDialog = false"
               >
-                Close
-              </v-btn>
-              <v-btn class="red--text accent-4" text @click="onSaveChanges">
-                Save
+                Cancel
               </v-btn>
             </v-card-actions>
           </v-flex>
@@ -95,57 +94,44 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
+import ActionsTypes from "../store/types/actions-types";
 
 export default {
-  props: ['recipe'],
+  props: ["car"],
   data() {
     return {
-      editDialog: false,
-      editedTitle: this.recipe.title,
-      editedDescription: this.recipe.description,
-      editedImageUrl: this.recipe.imageUrl,
-      editedIngredientsName: this.recipe.ingredientsName,
-      editedIngredientsQuantity: this.recipe.ingredientsQuantity
-
+      editedName: this.car.name,
+      editedPrice: this.car.price,
+      editedNumberOfSeats: this.car.seatsNumber,
     };
   },
   methods: {
-    ...mapActions([
-      'updateRecipeData'
-    ]),
-    onSaveChanges() {
-      this.editDialog = false;
+    ...mapActions({
+      editCarInformations: ActionsTypes.EDIT_CAR_ACTION,
+    }),
 
-      const stringifiedData = JSON.stringify(
-        this.$store.dispatch('updateRecipeData', {
-          id: this.recipe.id,
-          title: this.editedTitle,
-          description: this.editedDescription,
-          imageUrl: this.editedImageUrl,
-          ingredientsName: this.editedIngredientsName,
-          ingredientsQuantity: this.editedIngredientsQuantity
-        })
-      );
-      localStorage.setItem("updateRecipe", stringifiedData);
-      console.log(
-        "We got : ",
-        JSON.parse(localStorage.getItem("updateRecipe"))
-      );
+    onSaveChanges() {
+      const UpdatedCar = { ...this.car };
+      UpdatedCar.name = this.editedName;
+      UpdatedCar.price = this.editedPrice;
+      UpdatedCar.seatsNumber = this.editedNumberOfSeats;
+
+      this.editCarInformations(UpdatedCar);
     },
   },
 };
 </script>
 
 <style scoped>
-.color {
-  color: #D50000;
-  font-size: 2px;
+.myfont {
+  font-family: "Mansalva", cursive;
+  color: #d50000;
+  font-size: 23px;
 }
 
-
-.colorLabel{
-    color: #D50000;
+.colorLabel {
+  color: #d50000;
 }
 
 .margin {

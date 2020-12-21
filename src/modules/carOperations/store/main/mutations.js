@@ -8,11 +8,11 @@ const mutations = {
   },
   // get all cars
   [MutationsTypes.GET_ALL_CARS_MUTATION](state , data){
-    state.loadedCar = data 
+    state.loadedCar = data;
   },
   // get un sold cars
   [MutationsTypes.GET_UN_SOLD_CAR_MUTATION](state , data){
-    state.unSoldCars = data
+    state.unSoldCars = data;
   },
   // purchcase 
    [MutationsTypes.PURCHASE_CAR_MUTATION](state , car){
@@ -32,6 +32,10 @@ const mutations = {
   },
   [MutationsTypes.CREATE_CAR_WITH_OPTEMISTIC_LOCK](state , data){
     state.cars = data
+  },
+  [MutationsTypes.EDIT_CAR_MUTATION](state,car){
+    const carObj = state.loadedCar.filter(c => c.id=== car.id)[0];
+    state[carObj] = car;
   }
 };
 
