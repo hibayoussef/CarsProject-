@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../axiosWithDelimiterFile";
 
 export default {
   namespace: true,
@@ -29,15 +29,11 @@ export default {
       }
     },
 
-    SIGNUP(userData) {
+    SIGNUP(_, userData) {
+      console.log(`userData: `, userData);
       return new Promise((resolve, reject) => {
-        const Data = JSON.stringify({
-          name: userData.name,
-          email: userData.email,
-          password: userData,
-        });
-        axios
-          .post(`/signup`, Data)
+        api
+          .post(`/api/auth/signup`, userData)
           .then((res) => {
             console.log(res);
             resolve(res);
@@ -50,13 +46,11 @@ export default {
     },
 
     LOGIN({ commit }, userData) {
+      console.log('userData: ', userData);
+      userData.username = userData.email;
       return new Promise((resolve, reject) => {
-        const Data = JSON.stringify({
-          email: userData.email,
-          password: userData.password,
-        });
-        axios
-          .post("/signin", Data)
+        api
+          .post("/api/auth/signin", userData)
           .then((response) => {
             console.log(response);
             const token = response.data.accessToken;

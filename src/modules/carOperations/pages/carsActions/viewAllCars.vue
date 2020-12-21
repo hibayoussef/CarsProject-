@@ -58,7 +58,6 @@ export default {
       page: 1,
       pageCount: 0,
       itemsPerPage: 10,
-
       desserts: [
         {
           name: "Frozen Yogurt",
@@ -96,10 +95,12 @@ export default {
   },
   mounted() {
     // this.loadedCarsGetter();
+    this.loadedCarsAction();
   },
   methods: {
     ...mapActions({
       editcardispatcher: ActionsTypes.EDIT_CAR_ACTION,
+      loadedCarsAction: ActionsTypes.GET_ALL_CAR_ACTION
     }),
     edit() {
       this.editcardispatcher({});

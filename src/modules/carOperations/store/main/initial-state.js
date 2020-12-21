@@ -4,7 +4,7 @@ const state = {
   'Avocado'],
   loadedCar: [],
   unSoldCars:[],
-  cars:["Car1" , "Car2" , "Car3"],
+  cars:[],
   reports: [],
   itemsHeaders:[{
    
@@ -23,7 +23,13 @@ const state = {
     { text: "actions", value: "date", class: "red accent-4 white--text" }
   ],
   headers: [
-    
+    {
+      text: "ID",
+      align: "start",
+      sortable: true,
+      value: "id",
+      class: "red accent-4 white--text",
+    },
     {
       text: "Car name",
       align: "start",
@@ -34,18 +40,18 @@ const state = {
     { text: "Price", value: "price", class: "red accent-4 white--text" },
     {
       text: "Number of Seats",
-      value: "numberofseats",
+      value: "seatsNumber",
       class: "red accent-4 white--text",
     },
-    { text: "Date", value: "date", class: "red accent-4 white--text" },
+    { text: "Date", value: "dateOfSale", class: "red accent-4 white--text" },
     {
       text: "selling price",
-      value: "sellingprice",
+      value: "priceOfSale",
       class: "red accent-4 white--text",
     },
     {
-      text: "The buyer name",
-      value: "Thebuyername",
+      text: "Payer name",
+      value: "payerName",
       class: "red accent-4 white--text",
     },
     {

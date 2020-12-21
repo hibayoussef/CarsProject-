@@ -17,7 +17,7 @@
             </v-alert> -->
             <v-card-text>
               <v-container>
-                <form @click="onSignUp">
+                <form>
                   <v-layout row>
                     <v-flex xs12>
                       <v-text-field
@@ -71,7 +71,7 @@
 
                   <v-layout row>
                     <v-flex xs12>
-                      <v-btn class="red accent-4 color myfont">
+                      <v-btn @click="onSignUp" class="red accent-4 color myfont">
                         Sign up
                       </v-btn>
                     </v-flex>
@@ -108,11 +108,14 @@ export default {
   methods: {
     ...mapActions(["SIGNUP"]),
     onSignUp() {
-      this.SIGNUP({
-        name: this.name,
+      const data = {
+        username: this.name,
         email: this.email,
         password: this.password,
-      })
+      };
+
+      console.log(data);
+      this.SIGNUP(data)
         .then((res) => {
           console.log("SignUp succeeded");
           this.$router.push("/signin");
