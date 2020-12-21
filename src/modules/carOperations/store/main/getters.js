@@ -9,7 +9,13 @@ const getters = {
     },
     [GettersTypes.GET_CARS_GETTERS](state){
         return state.cars;
-    }
+    },
+    [GettersTypes.GET_HEADERS_ITEMS_GETTER](state){
+        return state.itemsHeaders;
+    },
+   [ GettersTypes.GET_ITEMS_FORM_GETTER](state){
+       return state.loadedCar
+   }
 }
  
 export default getters;

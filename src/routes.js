@@ -4,6 +4,7 @@ import Login from "./pages/Auth/login.vue";
 import AddCar from './modules/carOperations/pages/addCar.vue';
 import ViewAllCars from './modules/carOperations/pages/carsActions/viewAllCars.vue';
 import DropDownList from './modules/carOperations/pages/carsActions/dropdownList.vue';
+import sharedMap from './modules/carOperations/pages/carsActions/sharedMap.vue';
 
 
 export const routes = [
@@ -13,5 +14,6 @@ export const routes = [
   { path: "/signin", name: "SignIn", component: Login },
   { path: "/addcar", name: "AddCar", component: AddCar },
   { path: "/viewallcars", name: "ViewAllCars", component: ViewAllCars },
-  { path: "/dropdownlist", name: "dropdownlist", component: DropDownList }
-];
+  { path: "/dropdownlist", name: "dropdownlist", component: DropDownList },
+  { path: "/sharedMap", name: "sharedMap", component: sharedMap }
+]

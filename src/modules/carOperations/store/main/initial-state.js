@@ -1,8 +1,24 @@
 const state = {
   loadedCar: [],
   unSoldCars:[],
-  cars:[],
+  cars:["Car1" , "Car2" , "Car3"],
   reports: [],
+  itemsHeaders:[{
+   
+      text: "Id",
+      align: "start",
+      sortable: false,
+      value: "name",
+      class: "red accent-4 white--text",
+    },
+    {
+      text: "key",
+      value: "numberofseats",
+      class: "red accent-4 white--text",
+    },
+    { text: "value", value: "date", class: "red accent-4 white--text" },
+    { text: "actions", value: "date", class: "red accent-4 white--text" }
+  ],
   headers: [
     
     {
