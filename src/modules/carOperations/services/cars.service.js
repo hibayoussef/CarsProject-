@@ -10,6 +10,7 @@ export default class CarsService {
 
   // get Cars 
   viewAllCars(){
+   
     return api.get(CarsConfigurations.GETTING_CAR_INFO_URL);
   }
 

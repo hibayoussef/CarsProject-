@@ -7,7 +7,7 @@
             <!-- <v-alert color="error" :value="error" icon="close">some Data are Wrong Email or Password </v-alert> -->
             <v-card-text>
               <v-container class="margin">
-                <form @click="onSignIn">
+                <form>
                   <v-layout row>
                     <v-flex xs12>
                       <v-text-field
@@ -44,7 +44,7 @@
 
                   <v-layout row>
                     <v-flex xs12>
-                      <v-btn class="red accent-4 color myfont">
+                      <v-btn @click="onSignIn" class="red accent-4 color myfont">
                         Sign In
                       </v-btn>
                     </v-flex>
@@ -68,11 +68,13 @@ export default {
       email: "",
       password: "",
       error: false,
+      isShowError: false,
     };
   },
-  method: {
+  methods: {
     ...mapActions(["LOGIN"]),
     onSignIn() {
+      console.log('Signing in .....');
       this.LOGIN({
         email: this.email,
         password: this.password,

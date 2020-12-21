@@ -10,20 +10,20 @@ const actions = {
     {
         const carService = new CarsService();
         const reply = await carService.sendRquestToCreateNewCar({car});
+        console.log(reply);
         if(reply){
-            commit(MutationsTypes.ADD_NEW_CAR_MUTATION , reply.data.data);
+            commit(MutationsTypes.ADD_NEW_CAR_MUTATION , reply.data);
         }
-        console.log('the response i the action is:' , reply.data.data);
     },
 
     // Get All Cars action 
     async [ActionsTypes.GET_ALL_CAR_ACTION] ({commit}){
         const carsService = new CarsService();
         const reply = await carsService.viewAllCars();
+        console.log(reply.data);
         if(reply){
-            commit(MutationsTypes.GET_ALL_CARS_MUTATION , reply.data.car)
+            commit(MutationsTypes.GET_ALL_CARS_MUTATION , reply.data)
         } 
-        console.log('get all car action:',reply.data.car);
     },
 
 
