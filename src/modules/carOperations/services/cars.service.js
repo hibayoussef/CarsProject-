@@ -15,7 +15,7 @@ export default class CarsService {
 
   // Caching
   evictCaching(){
-    return api.delete(CarsConfigurations.CarsConfigurations.EVICT_CACHING_ACTION);
+    return api.delete(CarsConfigurations.EVICT_CACHING_ACTION);
   }
   // get Cars 
   viewAllCars(){
