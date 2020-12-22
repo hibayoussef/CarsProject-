@@ -36,19 +36,6 @@
             <v-btn icon @click="delete(item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
-
-            <!-- <v-btn  @click="onCreated">
-                Create
-              </v-btn>
-              <v-btn class="red accent-4 color myfont ml-3">
-                get
-              </v-btn>
-              <v-btn class="red accent-4 color myfont" @click="onCreateCar">
-                GeT ALL
-              </v-btn>
-              <v-btn class="red accent-4 color myfont" @click="onCreateCar">
-                DELETE
-              </v-btn> -->
           </template>
         </v-data-table>
         <!-- pagination -->
@@ -88,6 +75,7 @@ export default {
       },
     };
   },
+  
   created() {},
   computed: {
     ...mapGetters({
@@ -96,11 +84,12 @@ export default {
     }),
   },
   mounted() {
-    // this.loadedCarsGetter();
+    this.loadedItemsAction();
   },
   methods: {
     ...mapActions({
-      evictCaching: ActionsTypes.EVICT_CACHING_ACTION
+      evictCaching: ActionsTypes.EVICT_CACHING_ACTION,
+      loadedItemsAction: ActionsTypes.GET_ALL_CARS_SHMAP_ACTION
     }),
     onCreateCar() {},
     onCreateshm() {},

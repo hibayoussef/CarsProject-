@@ -57,33 +57,7 @@ export default {
     return {
       page: 1,
       pageCount: 0,
-      itemsPerPage: 10,
-      desserts: [
-        {
-          name: "Frozen Yogurt",
-          price: 159,
-          numberofseats: 6.0,
-          date: 24,
-          sellingprice: 4.0,
-          Thebuyername: "1%",
-        },
-        {
-          name: "Frozen Yogurt",
-          price: 159,
-          numberofseats: 6.0,
-          date: 24,
-          sellingprice: 4.0,
-          Thebuyername: "1%",
-        },
-        {
-          name: "Frozen Yogurt",
-          price: 159,
-          numberofseats: 6.0,
-          date: 24,
-          sellingprice: 4.0,
-          Thebuyername: "1%",
-        },
-      ],
+      itemsPerPage: 10
     };
   },
   created() {},

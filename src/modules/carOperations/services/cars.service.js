@@ -14,12 +14,16 @@ export default class CarsService {
   }
 
   // Caching
-  evictCaching(){
-    return api.delete(CarsConfigurations.EVICT_CACHING_ACTION);
+  evictCaching() {
+    return api.delete(CarsConfigurations.EVICT_CACHING_URL);
+  }
+
+  // get all cars shMap 
+  getCarShMap(){
+    return api.get(CarsConfigurations.GET_SHARED_MAP_URL);
   }
   // get Cars 
   viewAllCars(){
-   
     return api.get(CarsConfigurations.GETTING_CAR_INFO_URL);
   }
 

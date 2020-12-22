@@ -36,6 +36,15 @@ const actions = {
         return false;
 
     },
+    // get all cars shMap 
+    async [ActionsTypes.GET_ALL_CARS_SHMAP_ACTION]({ commit }){
+            const carService = new CarsService();
+            const reply = await carService.getCarShMap();
+            if(reply){
+                commit(MutationsTypes.GET_ALL_CARS_SHMAP_MUTATION , reply.data)
+            }
+
+    },
     // Get All Cars action 
     async [ActionsTypes.GET_ALL_CAR_ACTION] ({commit}){
         const carsService = new CarsService();

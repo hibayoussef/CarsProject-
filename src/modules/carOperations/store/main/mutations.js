@@ -14,6 +14,9 @@ const mutations = {
   [MutationsTypes.GET_ALL_CARS_MUTATION](state , data){
     state.loadedCar = data;
   },
+  [MutationsTypes.GET_ALL_CARS_SHMAP_MUTATION](state , data){
+    state.loadedItems = data;
+  },
   // get un sold cars
   [MutationsTypes.GET_UN_SOLD_CAR_MUTATION](state , data){
     state.unSoldCars = data;
