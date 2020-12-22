@@ -10,7 +10,8 @@ const CarsConfigurations = {
     GET_REPORT_URL: `api/services/cars/report`,
     EDIT_CAR_INFORMATION_URL: `JHVJHVKJKJKJ` , 
     POST_CARS_WITH_OPTIMISTIC_LOCK:`api/services/cars/create/with-optimistic-lock`,
-    CACHING_URL: `api/services/cars/evict-caching`
+    CACHING_URL: `api/services/cars/evict-caching`,
+    ADD_SHARED_PARAM_URL: (key, value) => `api/services/sharedMap/?key=${key}&value=${value}`
 }
 
 

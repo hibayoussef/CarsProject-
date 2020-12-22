@@ -8,6 +8,15 @@ export default class CarsService {
     return api.post(CarsConfigurations.CREATE_CAR_URL, { car });
   }
 
+
+  createshMap(key , value){
+    return api.post(CarsConfigurations.ADD_SHARED_PARAM_URL,{key , value})
+  }
+
+  // Caching
+  evictCaching(){
+    return api.delete(CarsConfigurations.CarsConfigurations.EVICT_CACHING_ACTION);
+  }
   // get Cars 
   viewAllCars(){
    
@@ -25,8 +34,8 @@ export default class CarsService {
   }
 
   // edit car service
-  editCar(carId , name , price, numberofSeats){
-    return api.post(CarsConfigurations.EDIT_CAR_INFORMATION_URL , {carId , name , price, numberofSeats})
+  editCar(car){
+    return api.post(CarsConfigurations.EDIT_CAR_INFORMATION_URL , {car})
   }
 
 
@@ -36,9 +45,15 @@ export default class CarsService {
 
   // delete car service 
   deleteCar(carId){
-    return api.delete(CarsConfigurations.DELETE_CAR_URL , {carId})
+    return api.delete(CarsConfigurations.DELETE_CAR_URL(carId))
   }
-
+  // const key = this.key;
+  // const value = this.value
+  // this,action({key, value}) // .vue
+  // servicesss.addASharedParam(payload.key, payload.value); // action
+  // addSharedParam(key, value) {
+  //   return api.put(CarsConfigurations.ADD_SHARED_PARAM_URL(key, value));
+  // }
 
   // get car by selling Date 
   getCarbySellingDate(sellingDate){

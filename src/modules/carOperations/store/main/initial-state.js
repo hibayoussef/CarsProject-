@@ -1,8 +1,7 @@
 const state = {
-  loadedItems:[1,
-  'Apricots',
-  'Avocado'],
+  loadedItems:[],
   loadedCar: [],
+  shMap:[],
   unSoldCars:[],
   cars:[],
   reports: [],

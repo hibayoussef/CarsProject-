@@ -6,6 +6,10 @@ const mutations = {
   [MutationsTypes.ADD_NEW_CAR_MUTATION](state, data) {
     state.loadedCar.push(data);
   },
+  // add shMap
+  [MutationsTypes.ADD_SHMAP_MUTATION](state , data){
+    state.shMap.push(data);
+  },
   // get all cars
   [MutationsTypes.GET_ALL_CARS_MUTATION](state , data){
     state.loadedCar = data;
@@ -16,16 +20,21 @@ const mutations = {
   },
   // purchcase 
    [MutationsTypes.PURCHASE_CAR_MUTATION](state , car){
-      const carIndex = state.loadedCar.filter(c => c.id === car.id)[0];
-      state[carIndex] = car;
+      let carFromState = state.loadedCar.filter(c => c.id === car.id)[0];
+      const idx = state.cars.indexOf(carFromState);
+      state.cars[idx] = car;
   },
 
-  [MutationsTypes.DELETE_CAR_MUTATION](state,data){
-    state.loadedCar = data
+  [MutationsTypes.DELETE_CAR_MUTATION](state,car){
+    let carFromState = state.loadedCar.filter(c => c.id === car.id)[0];
+    const idx = state.cars.indexOf(carFromState);
+    state.cars.splice(idx,1)
   },
+
   [MutationsTypes.GET_CAR_BY_SELLING_DATE_MUTATION](state , data){
     state.loadedCar = data
   },
+  
   [MutationsTypes.GET_REPORT_MUTATION](state , data){
     // The Data that comes from api in action => I want to put it in reports arrays
     state.reports = data

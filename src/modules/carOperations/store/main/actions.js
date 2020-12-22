@@ -16,6 +16,26 @@ const actions = {
         }
     },
 
+    // Create shMap 
+    async [ActionsTypes.ADD_CRAETE_SHARED_MAP_ACTION]({ commit } , {key , value}){
+        const carService = new CarsService();
+        const reply = await carService.createshMap(key , value);
+        if(reply){
+            commit(MutationsTypes.ADD_SHMAP_MUTATION , reply.data)
+        }
+    },
+
+
+    // caching
+    async [ActionsTypes.EVICT_CACHING_ACTION](){
+        const carService = new CarsService();
+        const reply = await carService.evictCaching();
+        if(reply && reply.data){
+            return true;
+        }
+        return false;
+
+    },
     // Get All Cars action 
     async [ActionsTypes.GET_ALL_CAR_ACTION] ({commit}){
         const carsService = new CarsService();
@@ -49,12 +69,12 @@ const actions = {
 
 
     // delete Car action 
-    async [ActionsTypes.DELETE_CAR_ACTION] ({ state } , carId){
+    async [ActionsTypes.DELETE_CAR_ACTION] ({ commit } , carId){
         const carService = new CarsService();
-        const reply = await carService.deleteCar({carId});
-        if(reply.data.deleted){
-            state.cars.splice(carId,1)
-            // commit(MutationsTypes.DELETE_CAR_MUTATION , reply.data.car)
+        const reply = await carService.deleteCar(carId);
+        if(reply && reply.data && reply.data.deleted){
+            commit(MutationsTypes.DELETE_CAR_MUTATION , carId)
+            return true;
         }
     },
 

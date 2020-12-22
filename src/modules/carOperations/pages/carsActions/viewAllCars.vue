@@ -23,7 +23,7 @@
             <v-btn icon @click="edit(item.id)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <v-btn icon @click="delete item.id">
+            <v-btn icon @click="delete (item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </template>
@@ -100,11 +100,17 @@ export default {
   methods: {
     ...mapActions({
       editcardispatcher: ActionsTypes.EDIT_CAR_ACTION,
+      deletecardispatcher: ActionsTypes.DELETE_CAR_ACTION,
       loadedCarsAction: ActionsTypes.GET_ALL_CAR_ACTION
     }),
     edit() {
       this.editcardispatcher({});
     },
+    delete(){
+      this.deletecardispatcher(
+        this.car.id
+    )
+    }
   },
 };
 </script>
