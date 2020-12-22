@@ -14,12 +14,11 @@ export default class CarsService {
   }
 
   // Caching
-  evictCaching(){
-    return api.delete(CarsConfigurations.CarsConfigurations.EVICT_CACHING_ACTION);
+  evictCaching() {
+    return api.delete(CarsConfigurations.EVICT_CACHING_ACTION);
   }
   // get Cars 
   viewAllCars(){
-   
     return api.get(CarsConfigurations.GETTING_CAR_INFO_URL);
   }
 

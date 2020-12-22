@@ -96,11 +96,10 @@ export default {
     }),
   },
   mounted() {
-    // this.loadedCarsGetter();
   },
   methods: {
     ...mapActions({
-      evictCaching: ActionsTypes.EVICT_CACHING_ACTION
+      evictCaching: ActionsTypes.EVICT_CACHING_ACTION,
     }),
     onCreateCar() {},
     onCreateshm() {},
