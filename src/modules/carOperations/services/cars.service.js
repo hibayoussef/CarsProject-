@@ -24,8 +24,9 @@ export default class CarsService {
   getCarShMap() {
     return api.get(CarsConfigurations.GET_SHARED_MAP_URL);
   }
-  // get Cars
-  viewAllCars() {
+
+  // get Cars 
+  viewAllCars(){
     return api.get(CarsConfigurations.GETTING_CAR_INFO_URL);
   }
 
@@ -74,25 +75,12 @@ export default class CarsService {
     });
   }
 
-<<<<<<< HEAD
 
 
   // generate report 
   generateReport(){
     return api.get(CarsConfigurations.GET_REPORT_URL)
-=======
-  // generate report
-  generateReport() {
-    return api.get(CarsConfigurations.GET_REPORT_URL);
->>>>>>> 35b3d0117a756cc790664fd0b11fc80c28d2de78
   }
 
-  createcarwithoptimisticlok(id, name, price, version) {
-    return api.post(CarsConfigurations.POST_CARS_WITH_OPTIMISTIC_LOCK, {
-      id,
-      name,
-      price,
-      version,
-    });
-  }
+
 }

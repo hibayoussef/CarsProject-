@@ -4,11 +4,10 @@
       <v-layout row>
         <v-flex xs12 class="text-right ">
           <v-btn
-          router to="/createshMap"
+          router to="/"
             class="gray accent-4 color myfont font-weight-bold mr-4"
             @click="onCreateshm"
           >
-
             Create
           </v-btn>
           <!-- <EditCar v-bind:header="header" v-on:t="CreateFunction($event)" /> -->

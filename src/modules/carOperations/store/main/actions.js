@@ -5,6 +5,7 @@ import MutationsTypes from '../types/mutations-types';
 
 const actions = {
 
+    
     // car actions to add new car
     async [ActionsTypes.ADD_NEW_CAR_ACTION]( {commit} , car)
     {
@@ -25,6 +26,7 @@ const actions = {
         }
         return false;
     },
+
     // Create shMap 
     async [ActionsTypes.ADD_CRAETE_SHARED_MAP_ACTION]({ commit } , {key , value}){
         const carService = new CarsService();
@@ -116,19 +118,12 @@ const actions = {
     async [ActionsTypes.EDIT_CAR_ACTION]({commit}, car) {
        const carService = new CarsService();
        const reply = await carService.editCar(car);
-       if(reply.data.deleted){
+       if(reply.data){
            commit(MutationsTypes.EDIT_CAR_MUTATION , car)
        }
       },
 
-    // Create Car with Optimistic lock 
-    async [ActionsTypes.GET_CARS_WITH_OPTIMISTIC_LOCK]({ commit} , car){
-        const carService = new CarsService();
-        const reply = await carService.CarOptimistikLock(car);
-        if(reply.data){
-            commit(MutationsTypes.EDIT_CAR_MUTATION , reply.data)
-        }
-    }
+   
 }
 
 
