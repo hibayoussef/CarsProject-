@@ -73,9 +73,9 @@ const actions = {
         const carsService = new CarsService();
         const reply = await carsService.getunsoldCar();
         if(reply){
-            commit(MutationsTypes.GET_UN_SOLD_CAR_MUTATION , reply.data.car)
+            commit(MutationsTypes.GET_UN_SOLD_CAR_MUTATION , reply.data)
         } 
-        console.log('get all car action:',reply.data.car);
+        // console.log('get all car action:',reply.data);
     },
 
     async [ActionsTypes.PURCHASE_CAR_ACTION] ({ commit } , car) {

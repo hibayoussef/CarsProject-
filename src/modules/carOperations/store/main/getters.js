@@ -15,6 +15,9 @@ const getters = {
     },
     [GettersTypes.GET_ITEMS_FORM_GETTER](state){
        return state.loadedItems;
+    },
+    [GettersTypes.GET_UN_SOLD_CARS_GETTER](state){
+        return state.unSoldCars; 
     }
 }
  
