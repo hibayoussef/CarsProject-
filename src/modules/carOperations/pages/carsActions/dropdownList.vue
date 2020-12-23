@@ -18,7 +18,6 @@
               @input="searchCars"
             ></v-text-field>
           </v-list-item-content>
-
         </v-list-item>
         <!-- ******************************** -->
                        <v-btn

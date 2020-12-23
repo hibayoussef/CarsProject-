@@ -12,6 +12,9 @@ export default class CarsService {
     return api.post(CarsConfigurations.ADD_SHARED_PARAM_URL, { key, value });
   }
 
+
+ 
+
   // Caching
   evictCaching() {
     return api.post(CarsConfigurations.EVICT_CACHING_URL);
@@ -21,8 +24,9 @@ export default class CarsService {
   getCarShMap() {
     return api.get(CarsConfigurations.GET_SHARED_MAP_URL);
   }
-  // get Cars
-  viewAllCars() {
+
+  // get Cars 
+  viewAllCars(){
     return api.get(CarsConfigurations.GETTING_CAR_INFO_URL);
   }
 
@@ -33,10 +37,15 @@ export default class CarsService {
 
   //purchase car action
   purchaseCar(car) {
-    return api.put(CarsConfigurations.PUT_PURCHASE_CAR_URL(car.id), {
+    return api.post(CarsConfigurations.PUT_PURCHASE_CAR_URL(car.id), {
       payerName: car.payerName,
       priceOfSale: car.priceOfSale,
+      dateOfSale: car.dateOfSale
     });
+  }
+
+  CarOptimistikLock(car){
+    return api.post(CarsConfigurations.POST_CARS_WITH_OPTIMISTIC_LOCK, car)
   }
 
   // edit car service
@@ -67,17 +76,12 @@ export default class CarsService {
     });
   }
 
-  // generate report
-  generateReport() {
-    return api.get(CarsConfigurations.GET_REPORT_URL);
+
+
+  // generate report 
+  generateReport(){
+    return api.get(CarsConfigurations.GET_REPORT_URL)
   }
 
-  createcarwithoptimisticlok(id, name, price, version) {
-    return api.post(CarsConfigurations.POST_CARS_WITH_OPTIMISTIC_LOCK, {
-      id,
-      name,
-      price,
-      version,
-    });
-  }
+
 }

@@ -5,6 +5,7 @@ import MutationsTypes from '../types/mutations-types';
 
 const actions = {
 
+
     // car actions to add new car
     async [ActionsTypes.ADD_NEW_CAR_ACTION]( {commit} , car)
     {
@@ -16,6 +17,7 @@ const actions = {
         }
     },
 
+    
     // purchase
     async [ActionsTypes.PURCHASE_CAR_ACTION](_ , car){
         const carService = new CarsService();
@@ -25,6 +27,7 @@ const actions = {
         }
         return false;
     },
+
     // Create shMap 
     async [ActionsTypes.ADD_CRAETE_SHARED_MAP_ACTION]({ commit } , {key , value}){
         const carService = new CarsService();
@@ -75,13 +78,12 @@ const actions = {
         console.log('get all car action:',reply.data.car);
     },
 
-    async [ActionsTypes.PURCHASE_CAR_ACTION] ({ commit } , {oldCar , payerName , priceOfSale}) {
+    async [ActionsTypes.PURCHASE_CAR_ACTION] ({ commit } , car) {
         const carService = new CarsService();
-        const reply = await carService.purchaseCar({oldCar , payerName , priceOfSale});
-        if(reply){
-             const newCar = reply.data.car;
-              oldCar = {...newCar};
-             commit(MutationsTypes.PURCHASE_CAR_MUTATION ,oldCar)
+        const reply = await carService.purchaseCar(car);
+        console.log(reply.data);
+        if(reply) {
+             commit(MutationsTypes.PURCHASE_CAR_MUTATION ,reply.data)
         }
     }, 
 
@@ -123,14 +125,7 @@ const actions = {
        }
       },
 
-    // Create Car with Optimistic lock 
-    async [ActionsTypes.GET_CARS_WITH_OPTIMISTIC_LOCK]({ commit} , {id , name , price, version}){
-        const carService = new CarsService();
-        const reply = await carService.createcarwithoptimisticlok({id , name , price, version});
-        if(reply){
-            commit(MutationsTypes.CREATE_CAR_WITH_OPTEMISTIC_LOCK , reply.data.data)
-        }
-    }
+   
 }
 
 

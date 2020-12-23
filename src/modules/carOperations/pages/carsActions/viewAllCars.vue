@@ -7,8 +7,6 @@
           <v-btn large router to="/addCar"  class="gray accent-4 color myfont font-weight-bold mr-4">
             CREATE
           </v-btn>
-  
-          <!-- <EditCar v-bind:header="header" v-on:t="CreateFunction($event)" /> -->
           <v-btn
             class="gray accent-4 color font-weight-bold pr-4 mr-4"
             @click="onEvictCaching"
@@ -17,6 +15,16 @@
           </v-btn>
         </v-flex>
       </v-layout>
+        <!-- <v-list-item ripple >
+          <v-list-item-content>
+            <v-text-field
+            color="#D50000"
+              v-model="searchTerm"
+              placeholder="Search"
+              @input="searchCars"
+            ></v-text-field>
+          </v-list-item-content>
+        </v-list-item> -->
       <v-card
         class="mx-auto mt-5 pa-3"
         max-width="100%"
@@ -41,10 +49,15 @@
               <v-icon>mdi-delete</v-icon>
             </v-btn>
              <v-btn icon 
-             router to="/purchase"
-             @click="onPurchase(item.id)">
+             @click="onPurchase(item)">
               <v-icon>mdi-account</v-icon>
             </v-btn>
+
+              <v-btn icon 
+             @click="onPurchaseOptimistik(item)">
+              <v-icon>mdi-account</v-icon>
+            </v-btn>
+
           </template>
         </v-data-table>
 
@@ -62,6 +75,7 @@
           ></v-text-field>
         </div>
         <EditCar @closeEditModal="showEditModal = false" :car="selectedCar" v-if="showEditModal"/>
+        <PurchaseCar @closePurchaseModal="showPurchaseModal = false" :car="selectedCar" v-if="showPurchaseModal"/>
       </v-card>
     </v-container>
   </v-app>
@@ -72,10 +86,13 @@ import { mapActions, mapGetters } from "vuex";
 import ActionsTypes from "../../store/types/actions-types";
 import GettersTypes from "../../store/types/getters-types";
 import EditCar from '../EditCar';
+import PurchaseCar from '../carsActions/purchase';
 
 export default {
   components: {
-    EditCar
+    EditCar,
+    PurchaseCar
+
   },
   data() {
     return {
@@ -83,7 +100,9 @@ export default {
       pageCount: 0,
       itemsPerPage: 10,
       selectedCar: null,
+      showPurchaseModal: false,
       showEditModal: false,
+      searchTerm: ''
     };
   },
   created() {},
@@ -91,6 +110,7 @@ export default {
     ...mapGetters({
       loadedCarsGetter: GettersTypes.GET_CAR_FORM_GETTER,
       tableHeaders: GettersTypes.GET_HEADERS_TABLE_GETTER,
+      
     }),
   },
   mounted() {
@@ -114,14 +134,16 @@ export default {
         console.log('error')
       })
     },
-    onPurchase(){
-      this.$router.push('/purchase')
+    onPurchase(car) {
+      this.selectedCar = car;
+      this.showPurchaseModal = true;
     },
     edit(car) {
       console.log(`this.showEditModal: ${this.showEditModal}`)
       this.showEditModal = true;
       console.log(`this.showEditModal: ${this.showEditModal}`)
       // this.editcardispatcher();
+      this.showEditModal = true;
       this.selectedCar = car;
     },
     onDelete(id){
