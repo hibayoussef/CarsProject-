@@ -42,7 +42,7 @@
               <v-icon>mdi-delete</v-icon>
             </v-btn>
              <v-btn icon 
-             
+             router to="/purchase"
              @click="onPurchase(item.id)">
               <v-icon>mdi-account</v-icon>
             </v-btn>
