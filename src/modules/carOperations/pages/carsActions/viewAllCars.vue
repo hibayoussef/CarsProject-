@@ -54,12 +54,14 @@
             <v-btn icon @click="onDelete(item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
-            <v-btn icon @click="onPurchase(item)">
-              <v-icon>mdi-account</v-icon>
+             <v-btn icon 
+             @click="onPurchase(item)">
+              <v-icon>mdi-currency-usd</v-icon>
             </v-btn>
 
-            <v-btn icon @click="onPurchaseOptimistik(item)">
-              <v-icon>mdi-account</v-icon>
+              <v-btn icon 
+             @click="onPurchaseOptimistik(item)">
+              <v-icon>mdi-currency-usd-off</v-icon>
             </v-btn>
           </template>
         </v-data-table>
