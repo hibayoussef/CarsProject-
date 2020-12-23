@@ -2,7 +2,7 @@
   <v-app class="bg">
     <v-container>
       <v-layout row>
-        <v-flex xs12 class="text-right ">
+        <v-flex xs12 class="text-right">
           <v-btn
             large
             router
@@ -11,11 +11,29 @@
           >
             CREATE
           </v-btn>
+
+           <v-btn
+            large
+            router
+            to="/unsoldCar"
+            class="gray accent-4 color myfont font-weight-bold mr-4"
+          >
+            UnSold Cars
+          </v-btn>
+
           <v-btn
             class="gray accent-4 color font-weight-bold pr-4 mr-4"
             @click="onEvictCaching"
           >
             EVICT CACHING
+          </v-btn>
+
+          <v-btn
+            large
+            class="gray accent-4 color myfont font-weight-bold mr-4"
+            @click="onGetReport"
+          >
+            REPORT
           </v-btn>
         </v-flex>
       </v-layout>
@@ -98,7 +116,7 @@ import EditCar from "../EditCar";
 import PurchaseCar from "../carsActions/purchase";
 
 export default {
-  props: ['car'],
+  props: ["car"],
   components: {
     EditCar,
     PurchaseCar,
@@ -112,14 +130,14 @@ export default {
       showPurchaseModal: false,
       showEditModal: false,
       searchTerm: "",
-      withOpt: false
+      withOpt: false,
     };
   },
   created() {},
   computed: {
     ...mapGetters({
       loadedCarsGetter: GettersTypes.GET_CAR_FORM_GETTER,
-      tableHeaders: GettersTypes.GET_HEADERS_TABLE_GETTER,
+      tableHeaders: GettersTypes.GET_HEADERS_TABLE_GETTER
     }),
   },
   mounted() {
@@ -132,6 +150,7 @@ export default {
       editcardispatcher: ActionsTypes.EDIT_CAR_ACTION,
       deletecardispatcher: ActionsTypes.DELETE_CAR_ACTION,
       loadedCarsAction: ActionsTypes.GET_ALL_CAR_ACTION,
+      loadedReport: ActionsTypes.GET_REPORT_ACTION
     }),
     onEvictCaching() {
       this.evictCaching()
@@ -163,6 +182,16 @@ export default {
     onDelete(id) {
       this.deletecardispatcher(id);
     },
+    // generate Report
+    onGetReport(){
+      this.loadedReport()
+      .then(ok=>{
+        console.log('Generated' , ok)
+      })
+      .catch(err=>{
+        console.log('some errors was happened' , err)
+      })
+    }
   },
 };
 </script>

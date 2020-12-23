@@ -107,14 +107,16 @@ const actions = {
             commit(MutationsTypes.GET_CAR_BY_SELLING_DATE_MUTATION , reply.data.data)
         }
     }, 
-
-    async [ActionsTypes.GET_REPORT_ACTION]({ commit }){
+    // Get Report
+    async [ActionsTypes.GET_REPORT_ACTION](){
         const carService = new CarsService();
         const reply = await carService.generateReport();
-        if(reply){
-            commit(MutationsTypes.GET_REPORT_MUTATION , reply.data.report)
+        if(reply.data){
+            return true;
         }
+        return false;
     },
+
     // Edit Car's Information action
     async [ActionsTypes.EDIT_CAR_ACTION]({commit}, car) {
        const carService = new CarsService();

@@ -38,10 +38,6 @@ const mutations = {
     state.loadedCar = data
   },
   
-  [MutationsTypes.GET_REPORT_MUTATION](state , data){
-    // The Data that comes from api in action => I want to put it in reports arrays
-    state.reports = data
-  },
   [MutationsTypes.CREATE_CAR_WITH_OPTEMISTIC_LOCK](state , data){
     state.cars = data
   },
