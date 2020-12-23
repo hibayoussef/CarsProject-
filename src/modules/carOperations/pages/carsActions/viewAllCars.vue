@@ -34,8 +34,7 @@
         >
           <template #[`item.actions`]="{ item }">
             <v-btn icon
-            router to="/editcar"
-             @click="edit(item.id)">
+             @click="edit(item)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <v-btn icon @click="delete (item.id)">
@@ -62,6 +61,7 @@
             class="pl-7 pr-7"
           ></v-text-field>
         </div>
+        <EditCar :car="selectedCar" v-if="selectedCar"/>
       </v-card>
     </v-container>
   </v-app>
@@ -71,13 +71,18 @@
 import { mapActions, mapGetters } from "vuex";
 import ActionsTypes from "../../store/types/actions-types";
 import GettersTypes from "../../store/types/getters-types";
+import EditCar from '../EditCar';
 
 export default {
+  components: {
+    EditCar
+  },
   data() {
     return {
       page: 1,
       pageCount: 0,
-      itemsPerPage: 10
+      itemsPerPage: 10,
+      selectedCar: null
     };
   },
   created() {},
@@ -111,8 +116,9 @@ export default {
     onPurchase(){
       this.$router.push('/purchase')
     },
-    edit() {
-      this.editcardispatcher({});
+    edit(car) {
+      // this.editcardispatcher();
+      this.selectedCar = car;
     },
     delete(){
       this.deletecardispatcher(
