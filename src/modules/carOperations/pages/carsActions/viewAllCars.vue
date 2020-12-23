@@ -105,7 +105,6 @@
         />
         <Report
           @closeReportModal="showPurchaseModal = false"
-          v-if="showReportModal"
         />
       </v-card>
     </v-container>
