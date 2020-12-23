@@ -5,7 +5,7 @@ import MutationsTypes from '../types/mutations-types';
 
 const actions = {
 
-    
+
     // car actions to add new car
     async [ActionsTypes.ADD_NEW_CAR_ACTION]( {commit} , car)
     {
@@ -17,6 +17,7 @@ const actions = {
         }
     },
 
+    
     // purchase
     async [ActionsTypes.PURCHASE_CAR_ACTION](_ , car){
         const carService = new CarsService();

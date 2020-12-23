@@ -15,6 +15,16 @@
           </v-btn>
         </v-flex>
       </v-layout>
+        <v-list-item ripple >
+          <v-list-item-content>
+            <v-text-field
+            color="#D50000"
+              v-model="searchTerm"
+              placeholder="Search"
+              @input="searchCars"
+            ></v-text-field>
+          </v-list-item-content>
+        </v-list-item>
       <v-card
         class="mx-auto mt-5 pa-3"
         max-width="100%"
