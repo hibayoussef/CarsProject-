@@ -122,11 +122,11 @@ const actions = {
       },
 
     // Create Car with Optimistic lock 
-    async [ActionsTypes.GET_CARS_WITH_OPTIMISTIC_LOCK]({ commit} , {id , name , price, version}){
+    async [ActionsTypes.GET_CARS_WITH_OPTIMISTIC_LOCK]({ commit} , car){
         const carService = new CarsService();
-        const reply = await carService.createcarwithoptimisticlok({id , name , price, version});
-        if(reply){
-            commit(MutationsTypes.CREATE_CAR_WITH_OPTEMISTIC_LOCK , reply.data.data)
+        const reply = await carService.CarOptimistikLock(car);
+        if(reply.data){
+            commit(MutationsTypes.EDIT_CAR_MUTATION , reply.data)
         }
     }
 }
