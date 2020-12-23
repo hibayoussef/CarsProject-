@@ -1,10 +1,14 @@
 <template>
   <v-app class="bg">
     <v-container>
-       <v-layout row>
+      <v-layout row>
         <v-flex xs12 class="text-right ">
-         
-          <v-btn large router to="/addCar"  class="gray accent-4 color myfont font-weight-bold mr-4">
+          <v-btn
+            large
+            router
+            to="/addCar"
+            class="gray accent-4 color myfont font-weight-bold mr-4"
+          >
             CREATE
           </v-btn>
           <v-btn
@@ -15,16 +19,19 @@
           </v-btn>
         </v-flex>
       </v-layout>
-        <!-- <v-list-item ripple >
-          <v-list-item-content>
-            <v-text-field
+      <v-list-item ripple>
+        <v-list-item-content>
+          <v-text-field
             color="#D50000"
-              v-model="searchTerm"
-              placeholder="Search"
-              @input="searchCars"
-            ></v-text-field>
-          </v-list-item-content>
-        </v-list-item> -->
+            v-model="searchTerm"
+            placeholder="Search"
+            type="text"
+            @input="searchCars"
+          ></v-text-field>
+
+              
+        </v-list-item-content>
+      </v-list-item>
       <v-card
         class="mx-auto mt-5 pa-3"
         max-width="100%"
@@ -41,26 +48,21 @@
           @page-count="pageCount = $event"
         >
           <template #[`item.actions`]="{ item }">
-            <v-btn icon
-             @click="edit(item)">
+            <v-btn icon @click="edit(item)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <v-btn icon @click="onDelete(item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
-             <v-btn icon 
-             @click="onPurchase(item)">
+            <v-btn icon @click="onPurchase(item)">
               <v-icon>mdi-account</v-icon>
             </v-btn>
 
-              <v-btn icon 
-             @click="onPurchaseOptimistik(item)">
+            <v-btn icon @click="onPurchaseOptimistik(item)">
               <v-icon>mdi-account</v-icon>
             </v-btn>
-
           </template>
         </v-data-table>
-
         <!-- pagination -->
         <div class="text-center pt-2">
           <v-pagination v-model="page" :length="pageCount"></v-pagination>
@@ -74,8 +76,16 @@
             class="pl-7 pr-7"
           ></v-text-field>
         </div>
-        <EditCar @closeEditModal="showEditModal = false" :car="selectedCar" v-if="showEditModal"/>
-        <PurchaseCar @closePurchaseModal="showPurchaseModal = false" :car="selectedCar" v-if="showPurchaseModal"/>
+        <EditCar
+          @closeEditModal="showEditModal = false"
+          :car="selectedCar"
+          v-if="showEditModal"
+        />
+        <PurchaseCar
+          @closePurchaseModal="showPurchaseModal = false"
+          :car="selectedCar"
+          v-if="showPurchaseModal"
+        />
       </v-card>
     </v-container>
   </v-app>
@@ -85,14 +95,13 @@
 import { mapActions, mapGetters } from "vuex";
 import ActionsTypes from "../../store/types/actions-types";
 import GettersTypes from "../../store/types/getters-types";
-import EditCar from '../EditCar';
-import PurchaseCar from '../carsActions/purchase';
+import EditCar from "../EditCar";
+import PurchaseCar from "../carsActions/purchase";
 
 export default {
   components: {
     EditCar,
-    PurchaseCar
-
+    PurchaseCar,
   },
   data() {
     return {
@@ -102,7 +111,7 @@ export default {
       selectedCar: null,
       showPurchaseModal: false,
       showEditModal: false,
-      searchTerm: ''
+      searchTerm: "",
     };
   },
   created() {},
@@ -110,7 +119,6 @@ export default {
     ...mapGetters({
       loadedCarsGetter: GettersTypes.GET_CAR_FORM_GETTER,
       tableHeaders: GettersTypes.GET_HEADERS_TABLE_GETTER,
-      
     }),
   },
   mounted() {
@@ -122,35 +130,32 @@ export default {
       evictCaching: ActionsTypes.EVICT_CACHING_ACTION,
       editcardispatcher: ActionsTypes.EDIT_CAR_ACTION,
       deletecardispatcher: ActionsTypes.DELETE_CAR_ACTION,
-      loadedCarsAction: ActionsTypes.GET_ALL_CAR_ACTION
+      loadedCarsAction: ActionsTypes.GET_ALL_CAR_ACTION,
     }),
-     onEvictCaching() {
+    onEvictCaching() {
       this.evictCaching()
-      .then(()=>{
-        console.log('ssssssss')
-      }
-      )
-      .catch(()=>{
-        console.log('error')
-      })
+        .then(() => {
+          console.log("ssssssss");
+        })
+        .catch(() => {
+          console.log("error");
+        });
     },
     onPurchase(car) {
       this.selectedCar = car;
       this.showPurchaseModal = true;
     },
     edit(car) {
-      console.log(`this.showEditModal: ${this.showEditModal}`)
+      console.log(`this.showEditModal: ${this.showEditModal}`);
       this.showEditModal = true;
-      console.log(`this.showEditModal: ${this.showEditModal}`)
+      console.log(`this.showEditModal: ${this.showEditModal}`);
       // this.editcardispatcher();
       this.showEditModal = true;
       this.selectedCar = car;
     },
-    onDelete(id){
-      this.deletecardispatcher(
-        id
-    )
-    }
+    onDelete(id) {
+      this.deletecardispatcher(id);
+    },
   },
 };
 </script>
