@@ -50,12 +50,12 @@
             </v-btn>
              <v-btn icon 
              @click="onPurchase(item)">
-              <v-icon>mdi-account</v-icon>
+              <v-icon>mdi-currency-usd</v-icon>
             </v-btn>
 
               <v-btn icon 
              @click="onPurchaseOptimistik(item)">
-              <v-icon>mdi-account</v-icon>
+              <v-icon>mdi-currency-usd-off</v-icon>
             </v-btn>
 
           </template>
