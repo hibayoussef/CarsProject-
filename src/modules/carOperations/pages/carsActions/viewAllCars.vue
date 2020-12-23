@@ -28,8 +28,6 @@
             type="text"
             @input="searchCars"
           ></v-text-field>
-
-              
         </v-list-item-content>
       </v-list-item>
       <v-card
@@ -54,18 +52,16 @@
             <v-btn icon @click="onDelete(item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
-             <v-btn icon 
-             @click="onPurchase(item)">
+            <v-btn icon @click="onPurchase(item)">
               <v-icon>mdi-currency-usd</v-icon>
             </v-btn>
 
-              <v-btn icon 
-             @click="onPurchaseOptimistik(item)">
+            <v-btn icon @click="onPurchaseOptimistik(item)">
               <v-icon>mdi-currency-usd-off</v-icon>
             </v-btn>
           </template>
         </v-data-table>
-        <!-- pagination -->
+
         <div class="text-center pt-2">
           <v-pagination v-model="page" :length="pageCount"></v-pagination>
           <v-text-field
@@ -101,6 +97,7 @@ import EditCar from "../EditCar";
 import PurchaseCar from "../carsActions/purchase";
 
 export default {
+  props: ['car'],
   components: {
     EditCar,
     PurchaseCar,

@@ -67,8 +67,7 @@ const actions = {
         } 
     },
 
-
-     // Get All un_sold Cars action 
+    // Get All un_sold Cars action 
     async [ActionsTypes.GET_UN_SOLD_CAR_ACTION] ({commit}){
         const carsService = new CarsService();
         const reply = await carsService.getunsoldCar();

@@ -77,7 +77,7 @@ export default {
     ...mapGetters({
       tableHeaders: GettersTypes.GET_HEADERS_TABLE_GETTER,
       loadedUnSoldCarsGetter: GettersTypes.GET_UN_SOLD_CARS_GETTER
-    }),
+    })
   },
   mounted() {
     this.loadedUnSoldCar();
