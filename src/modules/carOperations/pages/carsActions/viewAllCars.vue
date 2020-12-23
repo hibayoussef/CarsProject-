@@ -33,13 +33,17 @@
           @page-count="pageCount = $event"
         >
           <template #[`item.actions`]="{ item }">
-            <v-btn icon @click="edit(item.id)">
+            <v-btn icon
+            router to="/editcar"
+             @click="edit(item.id)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <v-btn icon @click="delete (item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
-             <v-btn icon @click="onPurchase(item.id)">
+             <v-btn icon 
+             
+             @click="onPurchase(item.id)">
               <v-icon>mdi-account</v-icon>
             </v-btn>
           </template>

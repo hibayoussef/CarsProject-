@@ -17,7 +17,7 @@ const actions = {
     },
 
     // purchase
-    async [ActionsTypes.PURCHASE_CAR_ACTION]({ commit } , car){
+    async [ActionsTypes.PURCHASE_CAR_ACTION](_ , car){
         const carService = new CarsService();
         const reply = await carService.purchaseCar(car);
         if(reply.data){
