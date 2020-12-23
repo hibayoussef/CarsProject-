@@ -7,6 +7,8 @@ import DropDownList from './modules/carOperations/pages/carsActions/dropdownList
 import sharedMap from './modules/carOperations/pages/carsActions/sharedMap.vue';
 import EditCar from './modules/carOperations/pages/EditCar.vue';
 import CreateshMap from './modules/carOperations/pages/CreateshMap.vue';
+import Purchase from './modules/carOperations/pages/carsActions/purchase.vue';
+
 
 export const routes = [
   { path: '/', redirect: '/home'},
@@ -18,5 +20,6 @@ export const routes = [
   { path: "/dropdownlist", name: "dropdownlist", component: DropDownList },
   { path: "/sharedMap", name: "sharedMap", component: sharedMap },
   { path: "/editcar", name: "Edit Car", component: EditCar },
-  { path: "/createshMap", name: "Create shMap", component: CreateshMap }
+  { path: "/createshMap", name: "Create shMap", component: CreateshMap },
+  { path: "/purchase", name: "Purchase", component: Purchase }
 ]

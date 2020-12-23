@@ -15,18 +15,31 @@
         <v-spacer></v-spacer>
 
         <span class="span-header">
-          <v-btn @click="onCreated" icon class="pl-8 myfont">
+           <v-btn  router to="/signin"  icon class="pl-8 myfont">
             <!-- <v-icon color="#fafafa" >LOGOUT</v-icon> -->
-            <v-icon large color="white darken-2">
-              mdi-arrow-up-bold-box-outline
+            <v-icon  color="white darken-2 ">
+              sign in 
             </v-icon>
           </v-btn>
+           <v-btn router to="/signup"  icon class="pl-8 myfont">
+            <!-- <v-icon color="#fafafa" >LOGOUT</v-icon> -->
+            <v-icon  color="white darken-2">
+              sign up
+            </v-icon>
+          </v-btn>
+          <!-- <v-btn @click="onCreated" icon class="pl-8 myfont"> -->
+            <!-- <v-icon color="#fafafa" >LOGOUT</v-icon> -->
+            <!-- <v-icon large color="white darken-2">
+              mdi-arrow-up-bold-box-outline
+            </v-icon>
+          </v-btn> -->
+         
         </span>
       </v-app-bar>
     </div>
     <v-container>
       <v-row>
-        <v-flex class="text-center">
+        <!-- <v-flex class="text-center">
           <v-btn
             large
             router
@@ -35,12 +48,12 @@
           >
             Explore Cars
           </v-btn>
-        </v-flex>
-        <v-flex class="text-center">
+        </v-flex> -->
+        <!-- <v-flex class="text-center">
           <v-btn large router to="/addCar" class="red accent-4  btn-style ">
             add Car
           </v-btn>
-        </v-flex>
+        </v-flex> -->
       </v-row>
 
       <v-layout row wrap>
@@ -50,6 +63,7 @@
               v-for="(item, i) in items"
               :key="i"
               :src="item.src"
+              class="pt-7"
             ></v-carousel-item>
           </v-carousel>
         </v-col>
@@ -102,6 +116,12 @@ export default {
           console.log(error);
         });
     },
+    onSignIn(){
+      this.$router.push('/signup');
+    },
+     onSignUp(){
+      this.$router.push('/viewallcars');
+    }
   },
 };
 </script>

@@ -7,8 +7,10 @@
             class="gray accent-4 color myfont font-weight-bold mr-4"
             @click="onCreateshm"
           >
+
             Create
           </v-btn>
+          <!-- <EditCar v-bind:header="header" v-on:t="CreateFunction($event)" /> -->
           <v-btn
             class="gray accent-4 color myfont font-weight-bold pr-4 mr-4"
             @click="onEvictCaching"
@@ -91,8 +93,10 @@ export default {
       evictCaching: ActionsTypes.EVICT_CACHING_ACTION,
       loadedItemsAction: ActionsTypes.GET_ALL_CARS_SHMAP_ACTION
     }),
-    onCreateCar() {},
-    onCreateshm() {},
+    onCreateshm() {
+      // this.emit('t', 'you Clicked Here one')
+    },
+    
     onEvictCaching() {
       this.evictCaching()
       .then(()=>{

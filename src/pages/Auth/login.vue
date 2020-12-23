@@ -81,7 +81,7 @@ export default {
       })
         .then((res) => {
           console.log("Login succeeded");
-          this.$router.push("/home");
+          this.$router.push("/viewallcars");
           console.log(res);
         })
         .catch((error) => {

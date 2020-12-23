@@ -1,15 +1,28 @@
 <template>
   <v-app class="bg">
     <v-container>
+       <v-layout row>
+        <v-flex xs12 class="text-right ">
+         
+          <v-btn large router to="/addCar"  class="gray accent-4 color myfont font-weight-bold mr-4">
+            CREATE
+          </v-btn>
+  
+          <!-- <EditCar v-bind:header="header" v-on:t="CreateFunction($event)" /> -->
+          <v-btn
+            class="gray accent-4 color font-weight-bold pr-4 mr-4"
+            @click="onEvictCaching"
+          >
+            EVICT CACHING
+          </v-btn>
+        </v-flex>
+      </v-layout>
       <v-card
         class="mx-auto mt-5 pa-3"
         max-width="100%"
         id="limited-products"
         :style="'border: 0px solid #D50000;'"
       >
-        <v-btn class="red accent-4 color myfont pl-3" @click="onCreateCar">
-          evict Cashig 
-        </v-btn>
         <v-data-table
           :headers="tableHeaders"
           :items="loadedCarsGetter"
@@ -25,6 +38,9 @@
             </v-btn>
             <v-btn icon @click="delete (item.id)">
               <v-icon>mdi-delete</v-icon>
+            </v-btn>
+             <v-btn icon @click="onPurchase(item.id)">
+              <v-icon>mdi-account</v-icon>
             </v-btn>
           </template>
         </v-data-table>
@@ -73,10 +89,24 @@ export default {
   },
   methods: {
     ...mapActions({
+      evictCaching: ActionsTypes.EVICT_CACHING_ACTION,
       editcardispatcher: ActionsTypes.EDIT_CAR_ACTION,
       deletecardispatcher: ActionsTypes.DELETE_CAR_ACTION,
       loadedCarsAction: ActionsTypes.GET_ALL_CAR_ACTION
     }),
+     onEvictCaching() {
+      this.evictCaching()
+      .then(()=>{
+        console.log('ssssssss')
+      }
+      )
+      .catch(()=>{
+        console.log('error')
+      })
+    },
+    onPurchase(){
+      this.$router.push('/purchase')
+    },
     edit() {
       this.editcardispatcher({});
     },
@@ -90,6 +120,12 @@ export default {
 </script>
 
 <style scoped>
+.color {
+  color: #d50000;
+  font-family: "Mansalva", cursive;
+  font-size: 24;
+}
+
 .bg {
   width: 100%;
   height: 100%;
