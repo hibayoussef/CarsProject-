@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="editDialog" persistent max-width="1050px" height="400px">
+    <v-dialog v-model="editModal" persistent max-width="1050px" height="400px">
       <v-card>
         <v-layout>
           <v-flex xs12>
@@ -66,7 +66,7 @@
               <v-btn
                 class="myfont pl-5 text-center"
                 text
-                @click="editDialog = false"
+                @click="closeModal"
               >
                 Cancel
               </v-btn>
@@ -86,10 +86,10 @@ export default {
   props: ["car"],
   data() {
     return {
-      editDialog: true,
       editedName: this.car.name,
       editedPrice: this.car.price,
       editedNumberOfSeats: this.car.seatsNumber,
+      editModal: true
     };
   },
   methods: {
@@ -104,7 +104,12 @@ export default {
       UpdatedCar.seatsNumber = this.editedNumberOfSeats;
 
       this.editCarInformations(UpdatedCar);
+      this.$emit('closeEditModal');
+
     },
+    closeModal() {
+      this.$emit('closeEditModal');
+    }
   },
 };
 </script>

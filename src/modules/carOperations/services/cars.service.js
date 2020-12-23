@@ -50,7 +50,7 @@ export default class CarsService {
 
   // delete car service
   deleteCar(carId) {
-    return api.delete(CarsConfigurations.DELETE_CAR_URL(carId));
+    return api.post(CarsConfigurations.DELETE_CAR_URL(carId));
   }
   // const key = this.key;
   // const value = this.value

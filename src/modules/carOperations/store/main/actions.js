@@ -90,7 +90,8 @@ const actions = {
     async [ActionsTypes.DELETE_CAR_ACTION] ({ commit } , carId){
         const carService = new CarsService();
         const reply = await carService.deleteCar(carId);
-        if(reply && reply.data && reply.data.deleted){
+        console.log(reply.data);
+        if(reply && reply.data){
             commit(MutationsTypes.DELETE_CAR_MUTATION , carId)
             return true;
         }
@@ -116,8 +117,9 @@ const actions = {
     async [ActionsTypes.EDIT_CAR_ACTION]({commit}, car) {
        const carService = new CarsService();
        const reply = await carService.editCar(car);
-       if(reply.data.deleted){
-           commit(MutationsTypes.EDIT_CAR_MUTATION , car)
+       console.log(reply);
+       if(reply.data){
+           commit(MutationsTypes.EDIT_CAR_MUTATION , reply.data)
        }
       },
 

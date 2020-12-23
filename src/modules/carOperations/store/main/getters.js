@@ -8,7 +8,7 @@ const getters = {
         return state.headers;
     },
     [GettersTypes.GET_CARS_GETTERS](state){
-        return state.cars;
+        return state.loadedCar;
     },
     [GettersTypes.GET_HEADERS_ITEMS_GETTER](state){
         return state.itemsHeaders;

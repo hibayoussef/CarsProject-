@@ -30,8 +30,8 @@ const mutations = {
 
   [MutationsTypes.DELETE_CAR_MUTATION](state,car){
     let carFromState = state.loadedCar.filter(c => c.id === car.id)[0];
-    const idx = state.cars.indexOf(carFromState);
-    state.cars.splice(idx,1)
+    const idx = state.loadedCar.indexOf(carFromState);
+    state.loadedCar.splice(idx,1)
   },
 
   [MutationsTypes.GET_CAR_BY_SELLING_DATE_MUTATION](state , data){
@@ -47,7 +47,8 @@ const mutations = {
   },
   [MutationsTypes.EDIT_CAR_MUTATION](state,car){
     const carObj = state.loadedCar.filter(c => c.id=== car.id)[0];
-    state[carObj] = car;
+    const idx = state.loadedCar.indexOf(carObj);
+    state.loadedCar[idx] = {...car};
   }
 };
 

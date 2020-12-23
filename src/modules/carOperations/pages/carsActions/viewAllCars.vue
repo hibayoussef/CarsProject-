@@ -61,7 +61,7 @@
             class="pl-7 pr-7"
           ></v-text-field>
         </div>
-        <EditCar :car="selectedCar" v-if="selectedCar"/>
+        <EditCar @closeEditModal="showEditModal = false" :car="selectedCar" v-if="showEditModal"/>
       </v-card>
     </v-container>
   </v-app>
@@ -82,7 +82,8 @@ export default {
       page: 1,
       pageCount: 0,
       itemsPerPage: 10,
-      selectedCar: null
+      selectedCar: null,
+      showEditModal: false,
     };
   },
   created() {},
@@ -117,6 +118,9 @@ export default {
       this.$router.push('/purchase')
     },
     edit(car) {
+      console.log(`this.showEditModal: ${this.showEditModal}`)
+      this.showEditModal = true;
+      console.log(`this.showEditModal: ${this.showEditModal}`)
       // this.editcardispatcher();
       this.selectedCar = car;
     },
