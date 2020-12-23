@@ -37,11 +37,11 @@
              @click="edit(item)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <v-btn icon @click="delete (item.id)">
+            <v-btn icon @click="onDelete(item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
              <v-btn icon 
-             
+             router to="/purchase"
              @click="onPurchase(item.id)">
               <v-icon>mdi-account</v-icon>
             </v-btn>
@@ -120,9 +120,9 @@ export default {
       // this.editcardispatcher();
       this.selectedCar = car;
     },
-    delete(){
+    onDelete(id){
       this.deletecardispatcher(
-        this.car.id
+        id
     )
     }
   },
