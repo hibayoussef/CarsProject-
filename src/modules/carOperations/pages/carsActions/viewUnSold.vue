@@ -26,25 +26,6 @@
           class="elevation-1"
           @page-count="pageCount = $event"
         >
-          <template #[`item.actions`]="{ item }">
-            <v-btn icon
-             @click="edit(item)">
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
-            <v-btn icon @click="onDelete(item.id)">
-              <v-icon>mdi-delete</v-icon>
-            </v-btn>
-             <v-btn icon 
-             @click="onPurchase(item)">
-              <v-icon>mdi-account</v-icon>
-            </v-btn>
-
-              <v-btn icon 
-             @click="onPurchaseOptimistik(item)">
-              <v-icon>mdi-account</v-icon>
-            </v-btn>
-
-          </template>
         </v-data-table>
 
         <!-- pagination -->
