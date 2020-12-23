@@ -30,6 +30,7 @@ const actions = {
     async [ActionsTypes.EVICT_CACHING_ACTION](){
         const carService = new CarsService();
         const reply = await carService.evictCaching();
+        console.log(reply);
         if(reply && reply.data){
             return true;
         }
@@ -49,7 +50,6 @@ const actions = {
     async [ActionsTypes.GET_ALL_CAR_ACTION] ({commit}){
         const carsService = new CarsService();
         const reply = await carsService.viewAllCars();
-        console.log(reply.data);
         if(reply){
             commit(MutationsTypes.GET_ALL_CARS_MUTATION , reply.data)
         } 
