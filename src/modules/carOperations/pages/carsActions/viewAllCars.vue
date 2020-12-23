@@ -103,6 +103,10 @@
           :withOpt="withOpt"
           v-if="showPurchaseModal"
         />
+        <Report
+          @closeReportModal="showPurchaseModal = false"
+          v-if="showReportModal"
+        />
       </v-card>
     </v-container>
   </v-app>
@@ -114,12 +118,14 @@ import ActionsTypes from "../../store/types/actions-types";
 import GettersTypes from "../../store/types/getters-types";
 import EditCar from "../EditCar";
 import PurchaseCar from "../carsActions/purchase";
+import Report from '../carsActions/reports';
 
 export default {
   props: ["car"],
   components: {
     EditCar,
     PurchaseCar,
+    Report
   },
   data() {
     return {

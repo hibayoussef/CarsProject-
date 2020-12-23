@@ -8,7 +8,8 @@ import sharedMap from './modules/carOperations/pages/carsActions/sharedMap.vue';
 import EditCar from './modules/carOperations/pages/EditCar.vue';
 import CreateshMap from './modules/carOperations/pages/CreateshMap.vue';
 import Purchase from './modules/carOperations/pages/carsActions/purchase.vue';
-import UnSoldCar from './modules/carOperations/pages/carsActions/viewUnSold.vue'
+import UnSoldCar from './modules/carOperations/pages/carsActions/viewUnSold.vue';
+import Report from './modules/carOperations/pages/carsActions/reports.vue';
 
 
 export const routes = [
@@ -23,5 +24,6 @@ export const routes = [
   { path: "/editcar", name: "Edit Car", component: EditCar },
   { path: "/createshMap", name: "Create shMap", component: CreateshMap },
   { path: "/purchase", name: "Purchase", component: Purchase },
-  { path: "/unsoldCar", name: "UnsoldCar", component: UnSoldCar }
+  { path: "/unsoldCar", name: "UnsoldCar", component: UnSoldCar },
+  { path: "/report", name: "Report", component: Report }
 ]

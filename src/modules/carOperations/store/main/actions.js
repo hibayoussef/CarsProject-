@@ -108,9 +108,10 @@ const actions = {
         }
     }, 
     // Get Report
-    async [ActionsTypes.GET_REPORT_ACTION](){
+    async [ActionsTypes.GET_REPORT_ACTION](_ , payload){
+        const { email , date , name} = payload
         const carService = new CarsService();
-        const reply = await carService.generateReport();
+        const reply = await carService.generateReport({ email , date , name});
         if(reply.data){
             return true;
         }
