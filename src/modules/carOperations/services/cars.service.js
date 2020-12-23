@@ -15,7 +15,7 @@ export default class CarsService {
 
   // Caching
   evictCaching() {
-    return api.delete(CarsConfigurations.EVICT_CACHING_URL);
+    return api.post(CarsConfigurations.EVICT_CACHING_URL);
   }
 
   // get all cars shMap 
