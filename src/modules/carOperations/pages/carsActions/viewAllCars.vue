@@ -31,7 +31,7 @@
           <v-btn
             large
             class="gray accent-4 color myfont font-weight-bold mr-4"
-            @click="onGetReport"
+            @click="showReportModal = true"
           >
             REPORT
           </v-btn>
@@ -104,7 +104,9 @@
           v-if="showPurchaseModal"
         />
         <Report
-          @closeReportModal="showPurchaseModal = false"
+
+          @closeReportModal="showReportModal = false"
+          v-if="showReportModal"
         />
       </v-card>
     </v-container>
@@ -133,6 +135,7 @@ export default {
       itemsPerPage: 10,
       selectedCar: null,
       showPurchaseModal: false,
+      showReportModal: false,
       showEditModal: false,
       searchTerm: "",
       withOpt: false,

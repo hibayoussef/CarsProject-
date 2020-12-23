@@ -80,7 +80,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import ActionsTypes from "../store/types/actions-types";
+import ActionsTypes from "../../store/types/actions-types";
 
 export default {
   props: ['car', 'withOpt'],
@@ -96,11 +96,11 @@ export default {
       reportAction: ActionsTypes.GET_REPORT_ACTION
     }),
     onSaveChanges() {
-     name=this.email,
-     date = this.date, 
-     content = this.content,
+     const email=this.email;
+     const date = "2020-01-08 12:30:00";//this.date; 
+     const content = this.content;
      this.reportAction({
-         name,email,content
+         email,date,content
      })
        this.$emit("closeReportModal");
     },
