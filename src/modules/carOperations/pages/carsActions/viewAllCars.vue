@@ -86,6 +86,7 @@
         <PurchaseCar
           @closePurchaseModal="showPurchaseModal = false"
           :car="selectedCar"
+          :withOpt="withOpt"
           v-if="showPurchaseModal"
         />
       </v-card>
@@ -114,6 +115,7 @@ export default {
       showPurchaseModal: false,
       showEditModal: false,
       searchTerm: "",
+      withOpt: false
     };
   },
   created() {},
@@ -146,6 +148,12 @@ export default {
     onPurchase(car) {
       this.selectedCar = car;
       this.showPurchaseModal = true;
+      this.withOpt = false;
+    },
+    onPurchaseOptimistik(car) {
+      this.selectedCar = car;
+      this.showPurchaseModal = true;
+      this.withOpt = true;
     },
     edit(car) {
       console.log(`this.showEditModal: ${this.showEditModal}`);

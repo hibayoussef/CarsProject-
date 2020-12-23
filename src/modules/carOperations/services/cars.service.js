@@ -36,12 +36,15 @@ export default class CarsService {
   }
 
   //purchase car action
-  purchaseCar(car) {
-    return api.post(CarsConfigurations.PUT_PURCHASE_CAR_URL(car.id), {
-      payerName: car.payerName,
-      priceOfSale: car.priceOfSale,
-      dateOfSale: car.dateOfSale
-    });
+  purchaseCar(car, withOpt) {
+    if(!withOpt) {
+      return api.post(CarsConfigurations.PUT_PURCHASE_CAR_URL(car.id), {
+        payerName: car.payerName,
+        priceOfSale: car.priceOfSale,
+        dateOfSale: car.dateOfSale
+      });
+    }
+    return api.post(CarsConfigurations.PUT_PURCHASE_CAR_WITHOPT_URL, car);
   }
 
   CarOptimistikLock(car){
