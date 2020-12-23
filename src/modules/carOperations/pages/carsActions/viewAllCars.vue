@@ -38,7 +38,7 @@
              @click="edit(item.id)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <v-btn icon @click="delete (item.id)">
+            <v-btn icon @click="onDelete(item.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
              <v-btn icon 
@@ -114,9 +114,9 @@ export default {
     edit() {
       this.editcardispatcher({});
     },
-    delete(){
+    onDelete(id){
       this.deletecardispatcher(
-        this.car.id
+        id
     )
     }
   },
