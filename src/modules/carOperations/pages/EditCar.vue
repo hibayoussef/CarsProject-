@@ -1,21 +1,6 @@
 <template>
   <v-row justify="center">
     <v-dialog v-model="editDialog" persistent max-width="1050px" height="400px">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          fab
-          accent
-          class="grey lighten-1 margin pa-4"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          <v-icon>
-            mdi-pencil
-          </v-icon>
-        </v-btn>
-      </template>
-
       <v-card>
         <v-layout>
           <v-flex xs12>
@@ -101,6 +86,7 @@ export default {
   props: ["car"],
   data() {
     return {
+      editDialog: true,
       editedName: this.car.name,
       editedPrice: this.car.price,
       editedNumberOfSeats: this.car.seatsNumber,
