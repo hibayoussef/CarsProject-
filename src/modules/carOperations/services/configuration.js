@@ -12,7 +12,9 @@ const CarsConfigurations = {
     POST_CARS_WITH_OPTIMISTIC_LOCK:`api/services/cars/create/with-optimistic-lock`,
     EVICT_CACHING_URL: `api/services/cars/evict-caching`,
     ADD_SHARED_PARAM_URL: (key, value) => `api/services/sharedMap/?key=${key}&value=${value}`,
-    PUT_PURCHASE_CAR_URL: id => `api/services/cars/purchase/${id}`
+    PUT_PURCHASE_CAR_URL: id => `api/services/cars/purchase/${id}`,
+    PUT_PURCHASE_CAR_WITHOPT_URL: `api/services/cars/purchase/opt`
+
 }
 
 

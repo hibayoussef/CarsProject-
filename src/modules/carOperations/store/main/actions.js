@@ -77,10 +77,11 @@ const actions = {
         // console.log('get all car action:',reply.data);
     },
 
-    async [ActionsTypes.PURCHASE_CAR_ACTION] ({ commit } , car) {
+    async [ActionsTypes.PURCHASE_CAR_ACTION] ({ commit } , payload) {
+        const {car, withOpt} = payload;
         const carService = new CarsService();
-        const reply = await carService.purchaseCar(car);
-        console.log(reply.data);
+        console.log(withOpt);
+        let reply = await carService.purchaseCar(car, withOpt);
         if(reply) {
              commit(MutationsTypes.PURCHASE_CAR_MUTATION ,reply.data)
         }

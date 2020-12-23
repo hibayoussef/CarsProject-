@@ -79,7 +79,7 @@ import { mapActions } from "vuex";
 import ActionsTypes from "../../store/types/actions-types";
 
 export default {
-  props: ['car'],
+  props: ['car', 'withOpt'],
   data() {
     return {
       purchaseModal: true,
@@ -95,7 +95,7 @@ export default {
       this.car.payerName = this.payerName;
       this.car.priceOfSale = this.priceOfSale;
       this.car.dateOfSale = new Date();
-      this.purchaseCar(this.car);
+      this.purchaseCar({car: this.car, withOpt: this.withOpt});
       this.$emit("closePurchaseModal");
     },
     onClose() {
