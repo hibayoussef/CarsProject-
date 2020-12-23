@@ -32,9 +32,9 @@ export default class CarsService {
     return api.get(CarsConfigurations.GET_CAR_UN_SOLD_URL);
   }
   
-   //  purchase car action 
-  purchaseCar(payerName , priceOfSale){
-    return api.put(CarsConfigurations.PUT_PURCHASE_CAR_URL , {payerName , priceOfSale})
+  //purchase car action 
+  purchaseCar(car){
+    return api.put(CarsConfigurations.PUT_PURCHASE_CAR_URL(car.id) , { payerName: car.payerName , priceOfSale: car.priceOfSale })
   }
 
   // edit car service

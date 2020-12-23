@@ -72,12 +72,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import ActionsTypes from '../../store/types/actions-types'
+
 export default {
   data() {
     return {};
   },
   methods: {
-    onSaveChanges() {},
+    ...mapActions({
+      purchaseCar: ActionsTypes.PURCHASE_CAR_ACTION
+    }),
+    onSaveChanges() {
+      this.purchaseCar(
+        this.car
+      )
+    },
   },
 };
 </script>

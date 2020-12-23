@@ -16,6 +16,15 @@ const actions = {
         }
     },
 
+    // purchase
+    async [ActionsTypes.PURCHASE_CAR_ACTION]({ commit } , car){
+        const carService = new CarsService();
+        const reply = await carService.purchaseCar(car);
+        if(reply.data){
+            return true;
+        }
+        return false;
+    },
     // Create shMap 
     async [ActionsTypes.ADD_CRAETE_SHARED_MAP_ACTION]({ commit } , {key , value}){
         const carService = new CarsService();
